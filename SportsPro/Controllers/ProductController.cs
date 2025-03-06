@@ -44,7 +44,6 @@ namespace SportsPro._Controllers
 
         // GET: Product/Create
         [HttpGet]
-        [Route("/Product/create-new/")]
         public IActionResult Create()
         {
             return View();
@@ -53,7 +52,7 @@ namespace SportsPro._Controllers
         // POST: Product/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost, ActionName("Edit")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProductID,ProductCode,Name,YearlyPrice,ReleaseDate")] Product product)
         {
@@ -67,8 +66,7 @@ namespace SportsPro._Controllers
         }
 
         // GET: Product/Edit/5
-        [Route("/Product/Edit/{id?}/changes")]
-        public async Task<IActionResult> Edit(int? id, string? name)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -86,9 +84,8 @@ namespace SportsPro._Controllers
         // POST: Product/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost, ActionName("Save")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("/Product/Edit/{id?}/changes-made/")]
         public async Task<IActionResult> Edit(int id, [Bind("ProductID,ProductCode,Name,YearlyPrice,ReleaseDate")] Product product)
         {
             if (id != product.ProductID)
